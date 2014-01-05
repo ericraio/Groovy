@@ -45,3 +45,39 @@ selected = langs.findAll { language, author ->
 selected.each { key, value ->
   println "Found $key written by $value"
 }
+
+println "----"
+
+print "Does any language name have a nonalphabetic character? "
+// the any method returns a boolean value if the closure evaluates to true or false once
+println langs.any { language, author ->
+  language =~ "[^A-Za-z]"
+}
+
+println "----"
+
+// the every method returns true only if the closure evaluates to true for all the elements
+// otherwise the every method returns false
+print "Do all language names have a nonalphabetic character? "
+println langs.every { language, author ->
+  language =~ "[^A-Za-z]"
+}
+
+println "----"
+
+friends = [ 
+  "Brian Goestz",
+  "Brian Sletten",
+  "David Bock",
+  "David Geary",
+  "Scott Davis",
+  "Scott Leberknight",
+  "Stuart Halloway"
+]
+
+// groupBy groups together the elements by the value that was returned in the closure
+// the value being returned in this closure below is the first name
+groupByFirstName = friends.groupBy { it.split(' ')[0] }
+groupByFirstName.each { firstName, buddies ->
+  println "$firstName : ${buddies.join(' ')}"
+}
