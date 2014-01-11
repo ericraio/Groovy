@@ -27,3 +27,12 @@ println "----"
 
 rows = sql.rows('SELECT * from weather')
 println "Weather info available from ${rows.size()} cites"
+
+println "----"
+
+dataSet = sql.dataSet('weather')
+citiesBelowFreezing = dataSet.findAll { it.temperature < 32 }
+println "Cities below freezing"
+citiesBelowFreezing.each {
+  println it.city
+}
