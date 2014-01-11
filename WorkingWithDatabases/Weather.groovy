@@ -36,3 +36,19 @@ println "Cities below freezing"
 citiesBelowFreezing.each {
   println it.city
 }
+
+println "----"
+
+printlnt "Number of cities : " + sql.rows("SELECT * from weather").size()
+dataSet.add(city: 'Denver', temperature: 19)
+println "Number of cities : " + sql.rows("SELECT * from weather").size()
+
+println "----"
+
+temperature = 50
+sql.executeInsert("""INSERT INTO weather (city, temperature)
+                      VALUES ('Oklahoma City', ${temperature})""")
+
+println sql.firstRow("SELECT temperature from weather where city='Oklahoma City'")
+
+
