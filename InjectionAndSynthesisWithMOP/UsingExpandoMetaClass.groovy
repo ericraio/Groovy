@@ -35,5 +35,5 @@ Integer.metaClass.constructor = { int val ->
   constructor.newInstance(val)
 }
 
-println  new Integer(4)
-println  new Integer(5)
+println new Integer(4)
+println new Integer(5)
